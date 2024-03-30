@@ -23,8 +23,16 @@
 <br />
 
 2. Running the Frontend App [Using Vite]
+> Go to Client Directory
 ```
   cd client
+```
+> Install Dependencies [Once only]
+```
+  npm install
+```
+> Run the React Server
+```
   npm run dev
 ```
 
