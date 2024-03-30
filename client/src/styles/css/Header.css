@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, #root {
+  background-color: #8a3ffc;
+  color: white;
+}
+
+.link:hover {
+  color: yellow;
+  text-shadow: 1px -1px 1px gray;
+  cursor: pointer;
+}/*# sourceMappingURL=Header.css.map */

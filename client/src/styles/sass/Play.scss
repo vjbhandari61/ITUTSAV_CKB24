@@ -1,0 +1,24 @@
+@import "App";
+
+
+
+
+
+#mainMenu{
+
+
+    #startInput-container{
+        margin-top: 10%;
+
+        input{
+            width: 60%;
+            height: 60px;
+        }
+        
+        button{
+            background-color: #430d97;
+            color: white;
+            padding: 15px;
+        }
+    }
+}
