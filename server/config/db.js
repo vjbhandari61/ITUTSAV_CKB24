@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-//const {MONGO_PASS, MONGO_USER, DB_NAME} = process.env;
+const {MONGO_PASS, MONGO_USER, DB_NAME} = process.env;
 
-const MONGO_PASS = "jbb4uoFu9yqtVQ3V"
-const MONGO_USER = "admin"
-const DB_NAME = ""
 
 
 const connectDB = async () => {
