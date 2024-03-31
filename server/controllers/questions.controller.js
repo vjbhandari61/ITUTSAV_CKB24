@@ -12,19 +12,21 @@ exports.fetchQuestions = async (req, res) => {
 
 exports.updateQuestions = async (req, res) => {
     try {
-        const newQuestions = req.body.questions;        
-        const existingQuestions = await questionModel.find({ question: { $in: newQuestions.map(q => q.question) } });
+        const {questions} = req.body;        
+        const existingQuestions = await questionModel.find({ _id: { $in: questions.map(question => question._id) } });
 
-        const filteredQuestions = newQuestions.filter(newQuestion => !existingQuestions.some(existingQuestion => existingQuestion.question === newQuestion.question));
+        await Promise.all(questions.map(async (newQuestion) => {
+            const existingQuestion = existingQuestions.find(q => q._id.toString() === newQuestion._id);
+            if (existingQuestion) {
+                if (existingQuestion.question !== newQuestion.question ||
+                    JSON.stringify(existingQuestion.options) !== JSON.stringify(newQuestion.options) ||
+                    existingQuestion.answer !== newQuestion.answer) {
+                    await questionModel.updateOne({ _id: newQuestion._id }, { $set: newQuestion });
+                }
+            }
+        }));
 
-        if (filteredQuestions.length > 0) {
-            await Promise.all(filteredQuestions.map(async (newQuestion) => {
-                await questionModel.updateOne({ question: newQuestion.question }, { $set: newQuestion }, { upsert: true });
-            }));
-            res.status(201).json({ msg: "Success", data: "Questions updated successfully" });
-        } else {
-            res.status(200).json({ msg: "No new questions to update" });
-        }
+        res.status(201).json({ msg: "Success", data: "Questions updated successfully" });
     } catch (error) {
         console.error('Error fetching questions:', error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
