@@ -13,4 +13,10 @@ html, #root {
 .move-button:hover {
   background-color: #430d97;
   color: white;
-}/*# sourceMappingURL=App.css.map */
+}
+
+.link:hover {
+  color: yellow;
+  text-shadow: 1px -1px 1px gray;
+  cursor: pointer;
+}/*# sourceMappingURL=Header.css.map */

@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require('cors')
+
 require('dotenv').config()
 const connectDB = require("./config/db");
 const adminRoutes = require('./routes/admin.route');
@@ -8,6 +9,7 @@ const questionRoutes = require('./routes/questions.route');
 
 const app = express()
 const PORT = process.env.PORT || 8000
+
 
 connectDB();
 

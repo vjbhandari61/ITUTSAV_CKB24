@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, #root {
+  background-color: rgb(7, 7, 7);
+  color: white;
+}
+
+.allow-line-breaks {
+  white-space: "pre-line";
+}
+
+.move-button:hover {
+  background-color: #430d97;
+  color: white;
+}
+
+#mainMenu #startInput-container {
+  margin-top: 10%;
+}
+#mainMenu #startInput-container input {
+  width: 60%;
+  height: 60px;
+}
+#mainMenu #startInput-container button {
+  background-color: #430d97;
+  color: white;
+  padding: 15px;
+}
+
+#inGame #questionContainer {
+  box-shadow: 7px 8px 10px -2px rgba(33, 5, 60, 0.49);
+  border-radius: 12px;
+}/*# sourceMappingURL=Play.css.map */
