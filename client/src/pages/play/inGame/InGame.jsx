@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { CustomRadioButton } from "../../../components/CustomRadioButton";
+import { formatTime } from "../../../utils/helpers";
 
 
 
@@ -65,14 +66,6 @@ const InGame = ({
       return () => clearInterval(intervalId);
     }, []);
 
-    function formatTime() {
-      const mins = Math.floor(totalTimer / 60);
-      const secs = totalTimer % 60;
-      const formattedTime = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-      return formattedTime;
-  }
-
-  
 
 
   return (
@@ -80,7 +73,7 @@ const InGame = ({
       <br />  <br />  
       <div className="bg-white max-w-min ml-40 text-black p-10" id='questionContainer'>
         <div className="font-bold text-xl">
-          <span className="text-sm text-red-400"> { formatTime() } </span>
+          <span className="text-sm text-red-400"> { formatTime(totalTimer) } </span>
           <span className="ml-40"> Team - { teamName } </span>
           <div className="float-right text-gray-600">
             {questionIndex+1}/{totalQuestions}

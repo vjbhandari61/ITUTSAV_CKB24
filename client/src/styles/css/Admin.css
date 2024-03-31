@@ -63,4 +63,24 @@ html, #root {
 #questionsMakeContainer #questions-modal .control-btns:hover {
   background-color: #430d97;
   color: white;
+}
+
+#resultsContainer .team-container {
+  border-radius: 7px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#resultsContainer .team-container:hover {
+  background-color: #430d97;
+  color: white;
+  cursor: pointer;
+}
+#resultsContainer .answer-container {
+  border-radius: 7px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#resultsContainer .text-allow-whitespace {
+  white-space: "pre-line";
+}
+#resultsContainer .picked-answer {
+  border-radius: 5px;
 }/*# sourceMappingURL=Admin.css.map */

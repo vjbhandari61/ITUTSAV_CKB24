@@ -71,4 +71,30 @@
 }
 
 
+#resultsContainer{
+    .team-container{
+        border-radius: 7px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        &:hover{
+            background-color: #430d97;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    .answer-container{
+        border-radius: 7px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .text-allow-whitespace{
+        white-space: 'pre-line';
+    }
+
+    .picked-answer{
+        border-radius: 5px;
+    }
+}
+
+
 

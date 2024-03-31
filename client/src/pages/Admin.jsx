@@ -47,7 +47,8 @@ const Admin = () => {
                                         />
   const ResultsViewComponent = () =>  <Results 
                                         setPageMode={setPageMode}
-                                        teams={teams}
+                                        teams={teams} setTeams={setTeams}
+                                        questions={questions}
                                       />
 
   const AdminComponents = [LoginComponent, PanelComponent, QuestionsMakeComponent, ResultsViewComponent]
