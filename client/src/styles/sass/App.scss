@@ -5,6 +5,19 @@
 
 
 html, #root {
-    background-color: #8a3ffc;
+    //background-color: #8a3ffc;
+    background-color: rgb(7, 7, 7);
     color: white;
+}
+
+
+.allow-line-breaks{
+    white-space: 'pre-line';
+}
+
+.move-button{
+    &:hover{
+        background-color: #430d97;
+        color: white;
+    }
 }

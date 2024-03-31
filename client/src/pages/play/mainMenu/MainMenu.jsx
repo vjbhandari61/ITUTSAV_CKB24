@@ -24,7 +24,7 @@ const MainMenu = ({ setGameMode, setTeam }) => {
           </div>
 
           <br />
-          <div className='text-9xl'>
+          <div className='text-9xl text-yellow-300'>
               Code ke Boss
           </div>
         </div>
