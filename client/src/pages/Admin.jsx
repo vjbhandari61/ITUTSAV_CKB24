@@ -12,8 +12,6 @@ async function loadQuestions(setQuestions){
   let questionsResponse = getQuestions()
   questionsResponse.then(res=>{
     let data = res['data']['data']
-    data = removeKey(data, '_id')
-    data = removeKey(data, '__v')
     setQuestions(data)
   })
 }

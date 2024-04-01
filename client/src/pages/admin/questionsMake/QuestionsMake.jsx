@@ -21,7 +21,9 @@ const QuestionsMake = ({ setPageMode, questions, setQuestions, questionIndex, se
     }
     setQuestions(oldQuestions=>{
       let newQuestions = [...oldQuestions]
-      newQuestions[questionIndex] = updatedQuestion
+      newQuestions[questionIndex]['question'] = updatedQuestion['question']
+      newQuestions[questionIndex]['options'] = updatedQuestion['options']
+      newQuestions[questionIndex]['answer'] = updatedQuestion['answer']
       return newQuestions
     })
 
@@ -29,6 +31,7 @@ const QuestionsMake = ({ setPageMode, questions, setQuestions, questionIndex, se
       "questions": questions
     }
     updateQuestions(questionsArr)
+    //console.log(questionsArr)
   }
 
   function previousQuestion(){

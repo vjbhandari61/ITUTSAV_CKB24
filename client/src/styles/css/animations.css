@@ -1,7 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik+Scribble&family=Workbench&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @-webkit-keyframes heartbeat {
   from {
     -webkit-transform: scale(1);
@@ -77,53 +73,4 @@
   to {
     transform: rotate(-360deg);
   }
-}
-html, #root {
-  background-color: #10172a;
-  color: white;
-}
-
-.allow-line-breaks {
-  white-space: "pre-line";
-}
-
-.move-button:hover {
-  background-color: #430d97;
-  color: white;
-}
-
-#mainMenu img {
-  animation: rotate360 2.5s linear infinite;
-}
-#mainMenu .text-shadow {
-  text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0, 0, 0, 0.15);
-  font-family: "Roboto Mono", monospace;
-}
-#mainMenu #startInput-container {
-  margin-top: 10%;
-}
-#mainMenu #startInput-container input {
-  width: 60%;
-  height: 60px;
-}
-#mainMenu #startInput-container input:focus {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-#mainMenu #startInput-container button {
-  background-color: rgba(191, 41, 41, 0.74);
-  color: white;
-  padding: 15px;
-  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-  animation: heartbeat 1.5s ease-in-out infinite both;
-}
-#mainMenu #startInput-container button:hover {
-  background-color: rgb(253, 224, 71);
-  color: black;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  animation: none;
-}
-
-#inGame #questionContainer {
-  box-shadow: 7px 8px 10px -2px rgba(33, 5, 60, 0.49);
-  border-radius: 12px;
-}/*# sourceMappingURL=Play.css.map */
+}/*# sourceMappingURL=animations.css.map */

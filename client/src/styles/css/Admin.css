@@ -11,8 +11,8 @@ html, #root {
 }
 
 .move-button:hover {
-  background-color: #430d97;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .back-btn:hover {

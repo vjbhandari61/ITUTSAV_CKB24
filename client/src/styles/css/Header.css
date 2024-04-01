@@ -11,12 +11,12 @@ html, #root {
 }
 
 .move-button:hover {
-  background-color: #430d97;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .link:hover {
   color: yellow;
-  text-shadow: 1px -1px 1px gray;
+  text-shadow: 1px -1px 1px grey;
   cursor: pointer;
 }/*# sourceMappingURL=Header.css.map */

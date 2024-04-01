@@ -5,19 +5,39 @@
 
 
 #mainMenu{
+    img{
+        animation: rotate360 2.5s linear infinite;
+    }
+
+    .text-shadow{
+        text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0,0,0,0.15);
+        font-family: "Roboto Mono", monospace;
+    }
+
     #startInput-container{
         margin-top: 10%;
 
         input{
             width: 60%;
             height: 60px;
+            &:focus{
+                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            }
         }
         
         button{
             //background-color: #430d97;
-            background-color: #430d97;
+            background-color: rgba(191, 41, 41, 0.74);
             color: white;
             padding: 15px;
+            -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+            animation: heartbeat 1.5s ease-in-out infinite both;
+            &:hover{
+                background-color: rgb(253 224 71);
+                color: black;
+                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+                animation: none;
+            }
         }
    }
 }
