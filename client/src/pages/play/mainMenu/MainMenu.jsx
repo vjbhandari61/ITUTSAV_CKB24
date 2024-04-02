@@ -1,6 +1,6 @@
 import 'animate.css'
 import { useState } from "react";
-import logoImage from './../../../assets/logo-1.png'
+import codexLogo from './../../../assets/logo/codexLogo_nobg.png'
 
 
 const MainMenu = ({ setGameMode, setTeam }) => {
@@ -19,7 +19,7 @@ const MainMenu = ({ setGameMode, setTeam }) => {
 
   return (
     <div id='mainMenu'>
-        <img src={logoImage} className="float-right mt-20 ml-40 rotate-center"/>
+        <img src={codexLogo} className="float-right mt-20" id='spinningRect'/>
         <div>  
           <br />  <br />  
           <div className="mt-10 animate__animated animate__slideInDown">

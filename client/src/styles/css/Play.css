@@ -75,9 +75,42 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+    transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+    transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+.rotate-scale-up {
+  -webkit-animation: rotate-scale-up 1.3s linear 0.8s infinite both;
+  animation: rotate-scale-up 1.3s linear 0.8s infinite both;
+}
+
 html, #root {
   background-color: #10172a;
   color: white;
@@ -92,8 +125,13 @@ html, #root {
   color: white;
 }
 
-#mainMenu img {
-  animation: rotate360 2.5s linear infinite;
+#mainMenu #logoImage {
+  width: 300px;
+  height: 300px;
+}
+#mainMenu #spinningRect {
+  width: 250px;
+  height: 250px;
 }
 #mainMenu .text-shadow {
   text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0, 0, 0, 0.15);
@@ -105,9 +143,10 @@ html, #root {
 #mainMenu #startInput-container input {
   width: 60%;
   height: 60px;
+  box-shadow: rgba(0, 0, 0, 0.64) 5px 19px 42px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 #mainMenu #startInput-container input:focus {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: none;
 }
 #mainMenu #startInput-container button {
   background-color: rgba(191, 41, 41, 0.74);

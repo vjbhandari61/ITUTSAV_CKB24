@@ -61,7 +61,7 @@ const InGame = ({
     useEffect(() => {
       const intervalId = setInterval(() => {
         setTotalTimer(prevTime => prevTime - 2);
-      }, 2000);
+      }, 1000);
   
       return () => clearInterval(intervalId);
     }, []);
