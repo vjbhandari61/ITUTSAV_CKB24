@@ -5,7 +5,8 @@ const teamSchema = new mongoose.Schema({
   totalScore: { type: Number, default: 0 },
   answers: [{ type: Number }],
   answerTime: [{ type: Number }],
-  totalTimeTaken: { type: Number, default: 0 }
+  totalTimeTaken: { type: Number, default: 0 },
+  attempted: [{type: Boolean}]
 });
 
 const Team = mongoose.model('Team', teamSchema);
