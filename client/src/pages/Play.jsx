@@ -4,7 +4,6 @@ import MainMenu from './play/mainMenu/MainMenu';
 import EndGame from './play/endGame/EndGame';
 import { useEffect, useState } from 'react';
 import { getQuestions } from '../utils/requester';
-//import { removeKey } from '../utils/helpers';
 
 
 const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
@@ -13,6 +12,7 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [timers, setTimers] = useState([]);
+    const [attempts, setAttempts] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
     
 
@@ -43,11 +43,13 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
                                         questionIndex={questionIndex} setQuestionIndex={setQuestionIndex}
                                         setGameMode={setGameMode}
                                         totalTimer={totalTimer} setTotalTimer={setTotalTimer}
+                                        attempts={attempts} setAttempts={setAttempts}
                                     />
 
     const EndGameComponent = () => <EndGame 
                                         teamName={teamName} questions={questions} 
                                         answers={answers} timers={timers} totalTimer={totalTimer}
+                                        attempts={attempts}
                                     />
     const modes = [MainMenuComponent, InGameComponent, EndGameComponent]
     const CurrentMode = modes[modeIndex];
@@ -64,7 +66,7 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
     
     
     return (
-    <div className='ml-40'>
+    <div className='ml-20'>
         <CurrentMode />
     </div>
     )

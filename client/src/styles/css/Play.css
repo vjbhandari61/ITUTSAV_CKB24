@@ -2,71 +2,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@-webkit-keyframes heartbeat {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-    transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-}
 @keyframes heartbeat {
   from {
-    -webkit-transform: scale(1);
     transform: scale(1);
-    -webkit-transform-origin: center center;
     transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   10% {
-    -webkit-transform: scale(0.91);
     transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   17% {
-    -webkit-transform: scale(0.98);
     transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   33% {
-    -webkit-transform: scale(0.87);
     transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   45% {
-    -webkit-transform: scale(1);
     transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 }
@@ -78,46 +33,37 @@
     transform: rotate(360deg);
   }
 }
-@-webkit-keyframes rotate-scale-up {
+@keyframes rotateAndScale {
   0% {
-    -webkit-transform: scale(1) rotateZ(0);
-    transform: scale(1) rotateZ(0);
+    transform: scale(0.5);
   }
   50% {
-    -webkit-transform: scale(2) rotateZ(180deg);
-    transform: scale(2) rotateZ(180deg);
+    transform: scale(0.8) rotate(180deg);
   }
   100% {
-    -webkit-transform: scale(1) rotateZ(360deg);
-    transform: scale(1) rotateZ(360deg);
+    transform: scale(0.5) rotate(360deg);
   }
 }
-@keyframes rotate-scale-up {
+@keyframes rotateAndScale_reverse {
   0% {
-    -webkit-transform: scale(1) rotateZ(0);
-    transform: scale(1) rotateZ(0);
+    transform: scale(0.6);
   }
   50% {
-    -webkit-transform: scale(2) rotateZ(180deg);
-    transform: scale(2) rotateZ(180deg);
+    transform: scale(0.9) rotate(-180deg);
   }
   100% {
-    -webkit-transform: scale(1) rotateZ(360deg);
-    transform: scale(1) rotateZ(360deg);
+    transform: scale(0.6) rotate(-360deg);
   }
 }
-.rotate-scale-up {
-  -webkit-animation: rotate-scale-up 1.3s linear 0.8s infinite both;
-  animation: rotate-scale-up 1.3s linear 0.8s infinite both;
-}
-
 html, #root {
   background-color: #10172a;
   color: white;
 }
 
 .allow-line-breaks {
-  white-space: "pre-line";
+  white-space: pre-line;
+  overflow: auto; /* or scroll if you want a scrollbar when needed */
+  word-wrap: break-word;
 }
 
 .move-button:hover {
@@ -125,20 +71,35 @@ html, #root {
   color: white;
 }
 
-#mainMenu #logoImage {
-  width: 300px;
-  height: 300px;
+#mainMenu #img-container {
+  width: 200px;
+  height: 200px;
 }
-#mainMenu #spinningRect {
-  width: 250px;
-  height: 250px;
+#mainMenu #img-container #codex-logo {
+  z-index: 2;
+}
+#mainMenu #img-container #spin-right {
+  animation: rotateAndScale 2s linear infinite;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+#mainMenu #img-container #spin-left {
+  animation: rotateAndScale_reverse 1.7s linear infinite;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+}
+#mainMenu #uu-logo {
+  width: 50px;
+  height: 50px;
 }
 #mainMenu .text-shadow {
   text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0, 0, 0, 0.15);
   font-family: "Roboto Mono", monospace;
 }
 #mainMenu #startInput-container {
-  margin-top: 10%;
+  margin-top: 7%;
 }
 #mainMenu #startInput-container input {
   width: 60%;
@@ -152,7 +113,6 @@ html, #root {
   background-color: rgba(191, 41, 41, 0.74);
   color: white;
   padding: 15px;
-  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
   animation: heartbeat 1.5s ease-in-out infinite both;
 }
 #mainMenu #startInput-container button:hover {
@@ -165,4 +125,15 @@ html, #root {
 #inGame #questionContainer {
   box-shadow: 7px 8px 10px -2px rgba(33, 5, 60, 0.49);
   border-radius: 12px;
+  width: 700px;
+  height: 100%;
+}
+#inGame #questionsList .attempt-label {
+  border-radius: 5px;
+}
+#inGame #questionsList .attempt-box {
+  border-radius: 7px;
+}
+#inGame #questionsList .attempt-box:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=Play.css.map */

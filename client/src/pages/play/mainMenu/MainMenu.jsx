@@ -1,6 +1,8 @@
 import 'animate.css'
 import { useState } from "react";
 import codexLogo from './../../../assets/logo/codexLogo_nobg.png'
+import spinningRect from './../../../assets/logo/1.png'
+import uuLogo from './../../../assets/logo/uuLogo.png';
 
 
 const MainMenu = ({ setGameMode, setTeam }) => {
@@ -19,15 +21,46 @@ const MainMenu = ({ setGameMode, setTeam }) => {
 
   return (
     <div id='mainMenu'>
-        <img src={codexLogo} className="float-right mt-20" id='spinningRect'/>
+        <div className="relative float-right mt-20" id='img-container'>
+          <img
+            id='codex-logo'
+            src={codexLogo}
+            alt="First Image"
+            className="absolute top-0 left-0 w-full h-full"
+          />
+          
+          <img
+            id='spin-right'
+            src={spinningRect}
+            alt="Second Image"
+            className="absolute top-0 left-0 w-full h-full"
+          />
+        </div>
         <div>  
           <br />  <br />  
-          <div className="mt-10 animate__animated animate__slideInDown">
-              <span className='text-5xl'> USCS - IT UTSAV </span>
-              <span className='text-3xl align-top'> 2024</span>
+
+          <div className='flex animate__animated animate__slideInDown'>
+            <img 
+              id='uu-logo'
+              src={uuLogo}
+            />
+            <div className='ml-5 mt-2 text-2xl'> Uttaranchal University </div>
           </div>
 
-          <br /> <br />
+          <br />
+
+          <div className="mt-10 animate__animated animate__slideInDown flex">
+              <img 
+                  id='uu-logo'
+                  src={uuLogo}
+              />
+              <div className='ml-5'>
+                <span className='text-5xl'> USCS - IT UTSAV </span>
+                <span className='text-3xl align-top'> 2024</span>
+              </div>
+          </div>
+
+          <br /> 
           <div className='text-4xl text-white-300 animate__animated animate__slideInLeft text-shadow'> Codex Club Presents </div>
           <div className='text-7xl text-yellow-300 text-shadow animate__animated animate__slideInLeft'> Code ke Boss </div>
         </div>

@@ -11,14 +11,15 @@ export function removeKey(obj, keyToRemove){
 }   
 
 
-export function sortArrayOfObjects(arr) {
-    arr.sort(function(firstItem, secItem) {
-        if (firstItem.key1 === secItem.key1) {
-            return secItem.key2 - firstItem.key2; 
+export function sortArrayOfObjects(array, key1, key2) {
+    return array.sort((a, b) => {
+        if (a[key1] === b[key1]) {
+            // If the values of key1 are the same, sort by key2
+            return a[key2] > b[key2] ? -1 : 1;
         }
-        return secItem.key1 - firstItem.key1; 
+        // Otherwise, sort by key1
+        return a[key1] > b[key1] ? -1 : 1;
     });
-    return arr;
 }
 
 export function formatTime(timer) {

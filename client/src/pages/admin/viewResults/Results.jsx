@@ -4,16 +4,38 @@ import { sortArrayOfObjects } from "../../../utils/helpers"
 
 
 const ResultsFull = ({ teams, onClickHandler }) =>{
+
+  function countAttempts(attemptsData){
+    let attempts = 0;
+    attemptsData.forEach(attempt => {
+      if(attempt)
+        attempts++;
+    });
+    return attempts
+  }
+
+  function formatTimer(seconds){
+    let mins = Math.floor(seconds/60)
+    let remSecs = seconds - (60*mins);
+    return `${mins} min:${remSecs} sec`
+  }
+
+  //console.log(teams)
   return (
     <div>
           {
             teams.map((team, index) => (
-                    <div className="my-1 text-white text-2xl p-3 w-6/12 team-container" 
+                    <div className="my-1 text-white text-xl p-3 w-6/12 team-container" 
                         key={index} onClick={ ()=> onClickHandler(index) }>
                           <span> <b className="mr-5">Team Name </b> {team.name}  </span>
-                          <span className="float-right text-xl"> {team.totalTimeTaken} secs  </span>
+                          <span className="float-right text-md text-green-400"> { formatTimer(team.totalTimeTaken) }  </span>
                           <br /> <br />
-                          <b className="mr-5">Total Score </b> {team.totalScore}
+                          <div className="text-green-500">
+                            <b className="mr-5">Total Score </b> {team.totalScore}/{team.answers.length} 
+                          </div> 
+                          <div className="text-yellow-400">
+                            <b className="mr-5">Attempted: </b> { countAttempts(team['attempted']) }
+                          </div>
                         <hr className="my-3"/>
                     </div>
             ))
@@ -22,9 +44,36 @@ const ResultsFull = ({ teams, onClickHandler }) =>{
   )
 }
 
+
+
+
 const ResultsDepth = ({ teamData, questions }) =>{
-  console.log(teamData)
-  console.log(questions)
+
+
+  function generateOptions(option, question, questionIndex, optionIndex){
+    //*question not attempted -> options have no color
+    if(!teamData['attempted'][questionIndex]){
+      return (<div key={optionIndex}> {optionIndex+1}.  <span className="ml-5" > {option}</span> </div>)
+    }
+    else{
+      //current option is the one user picked
+      if(optionIndex == teamData['answers'][questionIndex]){
+        if(teamData['answers'][questionIndex] == question['answer']){
+          //correct pick
+          return (<div key={questionIndex}> {questionIndex+1}.  <span className="ml-5 bg-green-500 picked-answer px-1" > {option}</span> </div>)
+        }else{
+          //wrong pick
+          return (<div key={questionIndex}> {questionIndex+1}.  <span className="ml-5 bg-red-500 picked-answer px-1"> {option}</span> </div>)
+        }       
+      }
+      //other options 
+      else{
+        return (<div key={optionIndex}> {optionIndex+1}.  <span className="ml-5" > {option}</span> </div>)
+      }
+    }
+  }
+
+
   return (
     <div>
       <br/><br/><br/>
@@ -33,30 +82,18 @@ const ResultsDepth = ({ teamData, questions }) =>{
           <div className="mb-10 text-white text-xl p-3 w-6/12 answer-container" key={index}>
             <div className="text-lg">
               <pre className="text-allow-whitespace">
-                { question['question'] }
+                { 
+                  (teamData['attempted'][index]) ? 
+                  (question['question']) :
+                  (<span className="bg-yellow-400 p-1 text-black"> {question['question']} </span>) 
+                }
               </pre>
             </div>
             
             <div className="mt-3">
               {
-                question['options'].map((option, i) =>(
-                  
-                  //User Picked this Answer
-                  (i == teamData['answers'][index]) ? (
-                    (teamData['answers'][index] == question['answer']) ?
-                        //User Picked Answer is correct
-                        (
-                          <div key={i}> {i+1}.  <span className="ml-5 bg-green-500 picked-answer px-1" > {option}</span> </div>
-                        ):
-                        //User Picked Answer is wrong
-                        (
-                          <div key={i}> {i+1}.  <span className="ml-5 bg-red-500 picked-answer px-1"> {option}</span> </div>
-                        )
-                  ) : (
-                    <div key={i}> {i+1}.  <span className="ml-5" > {option}</span> </div>
-                  )  
-                  
-                
+                question['options'].map((option, questionIndex) =>(
+                  generateOptions(option, question, index, questionIndex)
                 ))
               }
             </div>
@@ -78,8 +115,9 @@ const Results = ({ setPageMode, teams, setTeams, questions }) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(()=>{
-    const sortedTeams = sortArrayOfObjects(teams)
+    const sortedTeams = sortArrayOfObjects(teams, 'totalScore', 'totalTimeTaken')
     setTeams(sortedTeams)
+    //console.log(sortedTeams)
   })
 
   function returnToPanel(){
