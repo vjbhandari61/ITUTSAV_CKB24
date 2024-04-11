@@ -2,7 +2,6 @@
 
 
 ## Running the app
-
 <br />
 
 1. Starting the Server Side [Using Nodemon]
