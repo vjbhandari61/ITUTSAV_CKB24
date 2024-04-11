@@ -35,24 +35,24 @@
 }
 @keyframes rotateAndScale {
   0% {
-    transform: scale(0.5);
+    transform: scale(0.9);
   }
   50% {
-    transform: scale(0.8) rotate(180deg);
+    transform: scale(1.2) rotate(180deg);
   }
   100% {
-    transform: scale(0.5) rotate(360deg);
+    transform: scale(0.9) rotate(360deg);
   }
 }
 @keyframes rotateAndScale_reverse {
   0% {
-    transform: scale(0.6);
+    transform: scale(0.8);
   }
   50% {
-    transform: scale(0.9) rotate(-180deg);
+    transform: scale(1.1) rotate(-180deg);
   }
   100% {
-    transform: scale(0.6) rotate(-360deg);
+    transform: scale(0.8) rotate(-360deg);
   }
 }
 html, #root {
@@ -81,7 +81,7 @@ html, #root {
 #mainMenu #img-container #spin-right {
   animation: rotateAndScale 2s linear infinite;
   z-index: 2;
-  width: 200px;
+  width: 199px;
   height: 200px;
 }
 #mainMenu #img-container #spin-left {
@@ -93,6 +93,10 @@ html, #root {
 #mainMenu #uu-logo {
   width: 50px;
   height: 50px;
+}
+#mainMenu #uscs-logo {
+  width: 100px;
+  height: 100px;
 }
 #mainMenu .text-shadow {
   text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0, 0, 0, 0.15);

@@ -3,6 +3,7 @@ import { useState } from "react";
 import codexLogo from './../../../assets/logo/codexLogo_nobg.png'
 import spinningRect from './../../../assets/logo/1.png'
 import uuLogo from './../../../assets/logo/uuLogo.png';
+import uscsLogo from './../../../assets/logo/uscsLogo.png'
 
 
 const MainMenu = ({ setGameMode, setTeam }) => {
@@ -51,10 +52,10 @@ const MainMenu = ({ setGameMode, setTeam }) => {
 
           <div className="mt-10 animate__animated animate__slideInDown flex">
               <img 
-                  id='uu-logo'
-                  src={uuLogo}
+                  id='uscs-logo'
+                  src={uscsLogo}
               />
-              <div className='ml-5'>
+              <div className='ml-5 mt-5'>
                 <span className='text-5xl'> USCS - IT UTSAV </span>
                 <span className='text-3xl align-top'> 2024</span>
               </div>

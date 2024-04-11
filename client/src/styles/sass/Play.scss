@@ -12,7 +12,7 @@
         #spin-right{
             animation: rotateAndScale 2s linear infinite;
             z-index: 2;
-            width: 200px;
+            width: 199px;
             height: 200px;
         }
         #spin-left{
@@ -27,6 +27,9 @@
         width: 50px; height: 50px;
     }
 
+    #uscs-logo{
+        width: 100px; height: 100px;
+    }
 
     .text-shadow{
         text-shadow: 4px 5px 10px #1a1328, 9px 8px 0px rgba(0,0,0,0.15);
