@@ -13,13 +13,13 @@ const Home = () => {
     return (
         <BrowserRouter>
             <Routes>
-            <Route path="/" element={<Header showNav={!isPlaying}/>}>
+            <Route path="/">
                 <Route index element={  <Play 
                                             setPlaying={setPlaying}
                                             totalTimer={totalTimer} setTotalTimer={setTotalTimer}
                                         />} 
-                />
-                <Route path="admin" element={<Admin />} />
+            />
+            <Route path="admin" element={<Admin />} />
             </Route>
             </Routes>
         </BrowserRouter>

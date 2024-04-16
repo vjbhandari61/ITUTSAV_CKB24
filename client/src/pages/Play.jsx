@@ -2,6 +2,7 @@ import './../styles/css/Play.css';
 import InGame from './play/inGame/InGame';
 import MainMenu from './play/mainMenu/MainMenu';
 import EndGame from './play/endGame/EndGame';
+import GameRules from './play/gameRules/GameRules';
 import { useEffect, useState } from 'react';
 import { getQuestions } from '../utils/requester';
 
@@ -14,6 +15,7 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
     const [timers, setTimers] = useState([]);
     const [attempts, setAttempts] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);
+    const [showAlert, setShowAlert] = useState(false);
     
 
     function setGameMode(newMode){
@@ -44,6 +46,11 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
                                         setGameMode={setGameMode}
                                         totalTimer={totalTimer} setTotalTimer={setTotalTimer}
                                         attempts={attempts} setAttempts={setAttempts}
+                                        showAlert={showAlert} setShowAlert={setShowAlert}
+                                    />
+
+    const GameRulesComponent = () => <GameRules 
+                                        setGameMode={setGameMode}
                                     />
 
     const EndGameComponent = () => <EndGame 
@@ -51,17 +58,13 @@ const Play = ({ setPlaying, totalTimer, setTotalTimer }) => {
                                         answers={answers} timers={timers} totalTimer={totalTimer}
                                         attempts={attempts}
                                     />
-    const modes = [MainMenuComponent, InGameComponent, EndGameComponent]
+    const modes = [MainMenuComponent, GameRulesComponent, InGameComponent, EndGameComponent]
     const CurrentMode = modes[modeIndex];
 
-    useEffect(()=>{
-        if(modeIndex != 0){
-            setPlaying(true)
-        }
-        
+    useEffect(()=>{ 
         //end game
-        if(modeIndex == 1 && totalTimer <= 0)
-            setGameMode(2)
+        if(modeIndex == 2 && totalTimer <= 0)
+            setGameMode(3)
     })
     
     

@@ -1,7 +1,18 @@
-export function CustomRadioButton({ id, label, checked, onChange }) {
-    return (
+export function CustomRadioButton({ id, label, checked, onChange, attempted }) {
+    
+  function bgColorSetter(){
+    if(checked){
+      if(attempted)
+        return 'bg-green-300' 
+      else
+        return 'bg-white-200'
+    }
+    return '';
+  }
+  
+  return (
       <label 
-        className={`relative flex items-center p-3 rounded-full cursor-pointer ${checked ? 'bg-yellow-100' : 'bg-white-200'}`}
+        className={`relative flex items-center p-3 rounded-full cursor-pointer ${bgColorSetter()}`}
         htmlFor={id}
       >
         <input

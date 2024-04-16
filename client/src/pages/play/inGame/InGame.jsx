@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
 import { CustomRadioButton } from "../../../components/CustomRadioButton";
 import { formatTime } from "../../../utils/helpers";
-
+import utsavLogo from './../../../assets/logo/uscsLogo.jpeg'
+import CustomAlert from "../../../components/CustomAlert";
 
 
 const InGame = ({ 
       teamName, questions, answers, setAnswers, timers, setTimers, questionIndex, 
       setQuestionIndex, setGameMode,
       totalTimer, setTotalTimer,
-      attempts, setAttempts
+      attempts, setAttempts,
+      showAlert, setShowAlert
 }) => {
+
+  
 
   useEffect(()=>{
     initializeGame()
@@ -18,6 +22,8 @@ const InGame = ({
 
   //*When any 1 option out of the 4 given is clicked
   const handleOptionChange = (pickIndex) => {
+    if(showAlert)
+      return;
     //First time click -> mark this question as "attempted"
     if(!attempts[questionIndex]){
       setAttempts(oldAttempts=>{
@@ -41,7 +47,7 @@ const InGame = ({
 
   const nextQuestion = ()=>{
     if(questionIndex == questions.length - 1){
-      setGameMode(2)
+      setShowAlert(true)
     }else{
       setQuestionIndex(newIndex=> newIndex+1)
       setTotalTimer(prevTime => prevTime - 1);
@@ -61,6 +67,17 @@ const InGame = ({
       setQuestionIndex(index)
       setTotalTimer(prevTime => prevTime - 1);
     }
+  }
+
+
+  //Alert Handler
+  function alert_dontSubmit(){
+    setShowAlert(false)
+  }
+
+  function alert_doSubmit(){
+    setGameMode(3)
+    setShowAlert(false)
   }
 
 
@@ -97,17 +114,28 @@ const InGame = ({
       return () => clearInterval(intervalId);
     }, []);
 
+    const alertComponent = <CustomAlert message="Are you sure you want to proceed?" onYes={alert_doSubmit} onNo={alert_dontSubmit} id='alert-dialog'/>
 
 
   return (
     <div className="flex" id='inGame'>
+        
+        {showAlert && (
+          alertComponent
+        )}
+        
+
+        (
         <div className="flex-1">
         <br />  <br />  
         <div className="bg-white text-black p-10" id='questionContainer'>
-          <div className="font-bold text-xl">
-            <span className="text-lg bg-red-400 p-2 text-white"> { formatTime(totalTimer) } </span>
-            <span className="ml-40"> Team - { teamName } </span>
-            <div className="float-right text-gray-600">
+          <div className="font-bold text-xl flex flex-row">
+            <img 
+              id='utsav-logo'
+              src={utsavLogo}
+            />
+            <span className="ml-40"> Team  { teamName } </span>
+            <div className="ml-40 text-gray-600">
               {questionIndex+1}/{totalQuestions}
             </div>
           </div>
@@ -126,24 +154,28 @@ const InGame = ({
                         label={currentQuestion['options'][0]}
                         checked={answers[questionIndex] === 0}
                         onChange={() => handleOptionChange(0)}
+                        attempted={attempts[questionIndex]}
                       />
                       <CustomRadioButton 
                         id="option2"
                         label={currentQuestion['options'][1]}
                         checked={answers[questionIndex] === 1}
                         onChange={() => handleOptionChange(1)}
+                        attempted={attempts[questionIndex]}
                       />
                       <CustomRadioButton 
                         id="option3"
                         label={currentQuestion['options'][2]}
                         checked={answers[questionIndex] === 2}
                         onChange={() => handleOptionChange(2)}
+                        attempted={attempts[questionIndex]}
                       />
                       <CustomRadioButton 
                         id="option4"
                         label={currentQuestion['options'][3]}
                         checked={answers[questionIndex] === 3}
                         onChange={() => handleOptionChange(3)}
+                        attempted={attempts[questionIndex]}
                       />
                   </div>
               </div>
@@ -163,13 +195,18 @@ const InGame = ({
 
 
 
-      <div className="flex-1 mt-20 ml-20" id='questionsList'>
-        <div className="text-4xl underline">
-          Questions List
+      <div className="flex-1 mt-10 ml-20" id='questionsList'>
+        <div className="flex flex-right">
+          <div className="text-4xl underline mt-10">
+            Questions List
+          </div>
+          <div className="bg-red-600 text-2xl text-white py-10 px-5 ml-20" id='game-timer'>
+            {formatTime(totalTimer)}
+          </div>
         </div>
         <br />
         <div>
-          <span className="p-1 px-2 bg-yellow-300 text-black attempt-label"> Attempted </span>
+          <span className="p-1 px-2 bg-green-300 text-black attempt-label"> Attempted </span>
           <span className="ml-10 p-1 px-2 bg-white text-black attempt-label"> Unattempted </span>
         </div>
 
@@ -178,7 +215,7 @@ const InGame = ({
             {attempts.map((attempt, index) => (
               <div
                 key={index}
-                className={`p-4 ${attempt ? 'bg-yellow-300' : 'bg-white'} attempt-box`}
+                className={`p-4 ${attempt ? 'bg-green-300' : 'bg-white'} attempt-box`}
                 onClick={ ()=>jumpQuestion(index) }
               >
                 Q - {index+1}
@@ -187,7 +224,9 @@ const InGame = ({
           </div>
         </div>
       </div>
+      )
 
+      
     </div>
   )
 }

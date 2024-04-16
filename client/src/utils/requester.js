@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const HOST_URI = "https://bd0e-2409-4085-aec3-c255-b167-1018-b651-2227.ngrok-free.app"
+const HOST_URI = "http://localhost:8080"
 const headers = { 
     'ngrok-skip-browser-warning':true
 }
