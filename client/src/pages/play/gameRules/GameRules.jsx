@@ -49,8 +49,13 @@ const GameRules = ({ setGameMode }) =>{
             <br />
             <div className="flex flex-right mt-10 ml-60"> 
                 <button className="py-3 px-4 rounded-lg bg-yellow-400 text-xl text-black" onClick={goback}> Go Back </button>
-                <button className="ml-10 py-3 px-4 rounded-lg bg-green-500 text-xl text-white" onClick={startGame}> Start Game! </button>
+                <button className="ml-10 py-3 px-4 rounded-lg bg-green-500 text-xl text-white" onClick={startGame}> Round 1 </button>
+                <button className="ml-10 py-3 px-4 rounded-lg bg-red-400 text-xl text-white"> 
+                    <a href='https://docs.google.com/document/d/1Hg0sghIQIQ7RGhl4p0xrqvYg9fy0nFpTFymGdbq5-S4/edit?usp=sharing' target="_blank" rel="noopener noreferrer"> Round 2 </a>
+                </button>
             </div>
+
+    
             
 
             <div className='mt-20'></div>
